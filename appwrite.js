@@ -12,47 +12,6 @@ if (PROJECT_ID) client.setProject(PROJECT_ID);
 
 const database = new Databases(client);
 
-// export const updateSearchCount = async (searchTerm, movie) => {
-//   if (!searchTerm) return; 
-
-//   console.log(`searchTerm: ${searchTerm},movie: ${movie}, results: ${movie}`);
-  
-
-//   try {
-//     console.log(`DatabaseId = ${DATABASE_ID}, TableId = ${TABLE_ID}`);
-//     // CHANGED: listRows -> listDocuments
-//     const result = await database.listDocuments(DATABASE_ID, TABLE_ID, [
-//       Query.equal('searchTerm', searchTerm)
-//     ]);
-
-//     const docs = result.documents || [];
-
-//     if (docs.length > 0) {
-//       const doc = docs[0];
-//       // CHANGED: updateRows -> updateDocument
-//       await database.updateDocument(DATABASE_ID, TABLE_ID, doc.$id, {
-//         count: (doc.count || 0) + 1
-//       });
-//     } else {
-//       // CHANGED: createRows -> createDocument
-//       await database.createDocument(
-//         DATABASE_ID,
-//         TABLE_ID,
-//         ID.unique(),
-//         {
-//           searchTerm,
-//           count: 1,
-//           movie_id: movie.id,
-//           poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-//         }
-//       );
-//     }
-//   } catch (error) {
-//     console.error('Appwrite updateSearchCount error:', error);
-//   } finally {
-//     console.log('Appwrite config', APPWRITE_ENDPOINT, PROJECT_ID, DATABASE_ID, TABLE_ID);
-//   }
-// };
 
 export const updateSearchCount = async (searchTerm, movie) => {
   // --- THIS IS THE NEW LOGIC ---
@@ -67,7 +26,7 @@ export const updateSearchCount = async (searchTerm, movie) => {
   // 'searchTerm' is still needed for the *first* time we create an entry.
 
   try {
-    console.log(`DatabaseId = ${DATABASE_ID}, TableId = ${TABLE_ID}`);
+    // console.log(`DatabaseId = ${DATABASE_ID}, TableId = ${TABLE_ID}`);
 
     // 2. Look for a document that *already* has this movie_id.
     const result = await database.listDocuments(DATABASE_ID, TABLE_ID, [
@@ -104,7 +63,7 @@ export const updateSearchCount = async (searchTerm, movie) => {
   } catch (error) {
     console.error('Appwrite updateSearchCount error:', error);
   } finally {
-    console.log('Appwrite config', APPWRITE_ENDPOINT, PROJECT_ID, DATABASE_ID, TABLE_ID);
+    // console.log('Appwrite config', APPWRITE_ENDPOINT, PROJECT_ID, DATABASE_ID, TABLE_ID);
   }
 };
 

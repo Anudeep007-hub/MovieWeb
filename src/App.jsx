@@ -44,7 +44,6 @@ const App = () => {
     setIsLoading(true);
     setErrorMessage('');
     try {
-      console.log(`Base URL: ${API_KEY}`)
       const endpoint = query ? `${API_BASE_URL}/search/movie?query=${encodeURI(query)}` : `${API_BASE_URL}/discover/movie?&sort_by=popularity.desc`;
       const response = await fetch(endpoint, OPTIONS)
 
@@ -53,7 +52,6 @@ const App = () => {
       }
 
       const data = await response.json();
-      console.log(data);
 
       if (data.response === 'False') {
         setErrorMessage(data.Error || 'Failed to fetch movies');
