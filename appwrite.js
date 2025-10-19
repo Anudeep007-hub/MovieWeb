@@ -62,9 +62,7 @@ export const updateSearchCount = async (searchTerm, movie) => {
     }
   } catch (error) {
     console.error('Appwrite updateSearchCount error:', error);
-  } finally {
-    // console.log('Appwrite config', APPWRITE_ENDPOINT, PROJECT_ID, DATABASE_ID, TABLE_ID);
-  }
+  } 
 };
 
 export const getTrendingMovies = async () => {
