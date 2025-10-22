@@ -32,9 +32,9 @@
 | -------------- | --------------------------------------- |
 | **Frontend**   | React (Vite)                            |
 | **Backend**    | Appwrite Cloud (BaaS)                   |
-| **Database**   | Appwrite Collections                    |
+| **Database**   | Appwrite Database                       |
 | **Styling**    | Tailwind CSS                            |
-| **API Source** | TMDb (The Movie Database) or custom API |
+| **API Source** | TMDb (The Movie Database)|
 
 ---
 
